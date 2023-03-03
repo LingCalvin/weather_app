@@ -1,0 +1,15 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    - always_declare_return_types
+    - always_put_control_body_on_new_line
+    - avoid_print
+    - comment_references
+    - directives_ordering
+    - discarded_futures
+    - no_adjacent_strings_in_list
+    - prefer_relative_imports
+    - prefer_single_quotes
+    - require_trailing_commas
+    - unnecessary_statements
