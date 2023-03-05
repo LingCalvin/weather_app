@@ -43,3 +43,6 @@ app.*.map.json
 
 # Test artifacts
 /coverage/
+
+# Generated files
+*.g.dart
