@@ -1,0 +1,36 @@
+name: weather
+
+packages:
+  - .
+  - packages/*
+
+scripts:
+  analyze:
+    run: melos exec --flutter --  "flutter analyze ."
+
+  analyze:dart:
+    run: melos exec -c 1 --no-flutter -- "dart analyze ."
+  
+  analyze:flutter:
+    run: melos exec -c 1 --flutter -- "flutter analyze lib"
+
+  test:
+    run: melos run test:dart && melos run test:flutter
+
+  test:dart:
+    run: melos exec -c 1 --no-flutter --dir-exists="test" -- "dart run coverage:test_with_coverage"
+
+  test:flutter:
+    run: melos exec -c 1 --flutter --dir-exists="test" -- "flutter test --coverage"
+
+  generate:
+    run: melos run generate:dart && melos run generate:flutter
+  
+  generate:dart:
+    run: melos exec --depends-on="build_runner" --no-flutter -- "dart run build_runner build --delete-conflicting-outputs"
+
+  generate:flutter:
+    run: melos exec --depends-on="build_runner" --flutter -- "flutter pub run build_runner build --delete-conflicting-outputs"
+
+  format:
+    run: melos exec -- "dart format ."
