@@ -1,17 +1,20 @@
 import 'dart:collection';
 
 import 'package:collection/collection.dart';
+import 'package:http/http.dart' as http;
 import 'package:nws_api/nws_api.dart';
 
 import 'models/daily_weather_forecast.dart';
 import 'models/temperature.dart';
+import 'utils/http_caching_client.dart';
 import 'utils/nws_icon.dart';
 
 class WeatherRepository {
   final NwsApiClient _weatherApiClient;
 
   WeatherRepository({NwsApiClient? weatherApiClient})
-      : _weatherApiClient = weatherApiClient ?? NwsApiClient();
+      : _weatherApiClient = weatherApiClient ??
+            NwsApiClient(httpClient: HttpCachingClient(http.Client()));
 
   Future<DailyWeatherForecast> getDailyWeatherForecast(
     num latitude,
