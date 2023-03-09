@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'geo_json_feature.dart';
+import 'geo_json.dart';
 import 'geo_json_geometry.dart';
 import 'quantitative_value.dart';
 
@@ -37,10 +37,15 @@ class RelativeLocationContainer {
 }
 
 @JsonSerializable()
-class RelativeLocationGeoJson extends RelativeLocationContainer {
+class RelativeLocationGeoJson extends RelativeLocationContainer
+    implements GeoJsonFeature<RelativeLocation> {
+  @override
   final String? id;
+  @override
   final GeoJsonFeatureType type;
+  @override
   final GeoJsonGeometry geometry;
+  @override
   final RelativeLocation properties;
 
   const RelativeLocationGeoJson({

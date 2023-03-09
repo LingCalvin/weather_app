@@ -1,19 +1,23 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'geo_json_feature.dart';
+import 'geo_json.dart';
 import 'geo_json_geometry.dart';
 import 'gridpoint_forecast.dart';
 
 part 'gridpoint_forecast_geo_json.g.dart';
 
 @JsonSerializable()
-class GridpointForecastGeoJson {
+class GridpointForecastGeoJson implements GeoJsonFeature<GridpointForecast> {
+  @override
   final String? id;
+  @override
   final GeoJsonFeatureType type;
+  @override
   final GeoJsonGeometry geometry;
+  @override
   final GridpointForecast properties;
 
-  GridpointForecastGeoJson({
+  const GridpointForecastGeoJson({
     required this.id,
     required this.type,
     required this.geometry,

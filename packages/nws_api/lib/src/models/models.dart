@@ -1,4 +1,4 @@
-export 'geo_json_feature.dart';
+export 'geo_json.dart';
 export 'geo_json_geometry.dart';
 export 'gridpoint_forecast.dart';
 export 'gridpoint_forecast_geo_json.dart';

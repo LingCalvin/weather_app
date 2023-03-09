@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'geo_json_feature.dart';
+import 'geo_json.dart';
 import 'geo_json_geometry.dart';
 import 'observation_station_collection_geo_json.dart';
 import 'quantitative_value.dart';
@@ -8,13 +8,17 @@ import 'quantitative_value.dart';
 part 'observation_geo_json.g.dart';
 
 @JsonSerializable()
-class ObservationGeoJson {
+class ObservationGeoJson implements GeoJsonFeature<Observation> {
+  @override
   final String? id;
+  @override
   final GeoJsonFeatureType type;
+  @override
   final GeoJsonGeometry geometry;
+  @override
   final Observation properties;
 
-  ObservationGeoJson({
+  const ObservationGeoJson({
     required this.id,
     required this.type,
     required this.geometry,

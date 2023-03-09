@@ -5,8 +5,11 @@ import '../../nws_api.dart';
 part 'observation_station_collection_geo_json.g.dart';
 
 @JsonSerializable()
-class ObservationStationCollectionGeoJson {
-  final GeoJsonFeatureType type;
+class ObservationStationCollectionGeoJson
+    implements GeoJsonFeatureCollection<GeoJsonFeatureObservationStation> {
+  @override
+  final GeoJsonFeatureCollectionType type;
+  @override
   final List<GeoJsonFeatureObservationStation> features;
   final List<String>? observationStations;
 
@@ -23,17 +26,13 @@ class ObservationStationCollectionGeoJson {
 }
 
 @JsonSerializable()
-class GeoJsonFeatureObservationStation {
-  final String? id;
-  final GeoJsonFeatureType type;
-  final GeoJsonGeometry geometry;
-  final ObservationStation properties;
-
+class GeoJsonFeatureObservationStation
+    extends GeoJsonFeature<ObservationStation> {
   const GeoJsonFeatureObservationStation({
-    required this.id,
-    required this.type,
-    required this.geometry,
-    required this.properties,
+    required super.id,
+    required super.type,
+    required super.geometry,
+    required super.properties,
   });
 
   factory GeoJsonFeatureObservationStation.fromJson(

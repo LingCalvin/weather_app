@@ -75,7 +75,7 @@ void main() {
               .having(
                 (obj) => obj.type,
                 'type',
-                GeoJsonFeatureType.featureCollection,
+                GeoJsonFeatureCollectionType.featureCollection,
               ),
         );
       });
